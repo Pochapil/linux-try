@@ -31,7 +31,7 @@ X_tr = prep.transform(X_tr)
 X_tst = prep.transform(X_tst)
 
 # C = 1, C = 1e3
-model = LogisticRegression(penalty='l2', C=1, fit_intercept=True, solver='newton-cholesky', n_jobs=1)
+model = LogisticRegression(penalty='l2', C=2, fit_intercept=True, solver='newton-cholesky', n_jobs=1)
 model.fit(X_tr, y_tr)
 
 score = roc_auc_score(y_tst, model.predict_proba(X_tst)[:, 1])
