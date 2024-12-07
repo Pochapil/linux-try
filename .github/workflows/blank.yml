@@ -44,6 +44,11 @@ jobs:
         run: |
           python ./train.py
 
+      - name: check better score
+        run: |
+          python ./check.py > r
+          
+      
       - name: push changes
         if: ${{ success() }}
         run: |
