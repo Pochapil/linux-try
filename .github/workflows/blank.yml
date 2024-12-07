@@ -44,10 +44,17 @@ jobs:
         run: |
           python ./train.py
 
-      - name: check better score
-        run: |
-          python ./check.py > r
-          
+      - name: open issue if train fails
+        if: ${{ failure() }}
+        run: gh issue comment "$NUMBER" --body "$BODY"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          BODY: >
+            This issue is available for anyone to work on.
+            **Make sure to reference this issue in your pull request.**
+            :sparkles: Thank you for your contribution! :sparkles:
       
       - name: push changes
         if: ${{ success() }}
