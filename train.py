@@ -35,7 +35,7 @@ model = LogisticRegression(penalty='l2', C=2, fit_intercept=True, solver='newton
 model.fit(X_tr, y_tr)
 
 score = roc_auc_score(y_tst, model.predict_proba(X_tst)[:, 1])
-
+)
 print(score
 
 import json
