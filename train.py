@@ -36,7 +36,7 @@ model.fit(X_tr, y_tr)
 
 score = roc_auc_score(y_tst, model.predict_proba(X_tst)[:, 1])
 
-print(score)
+print(score
 
 import json
 
